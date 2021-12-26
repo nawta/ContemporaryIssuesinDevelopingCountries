@@ -56,15 +56,16 @@ Thereby, my hypothesis is "there should be some relationships between the number
 In this chapter, I explain the datasets I used to study this hypothesis.
 I used 
 \begin{enumerate}
-    \item Population, total(Population estimates and projections) in 2018 from DataBank~\cite{databank}
+    \item Population, total(Population estimates and projections) in 2019 from DataBank~\cite{databank}
     \item Incidence of HIV, total (per 1,000 uninfected population) in 2020 from DataBank~\cite{databank}
-    \item Incidence of malaria (per 1,000 population at risk) in 2020 from DataBank~\cite{databank}
+    \item Incidence of malaria (per 1,000 population at risk) in 2018 from DataBank~\cite{databank}
     \item Incidence of tuberculosis (per 1,000 population at risk) in 2020 from DataBank~\cite{databank}
     \item Incidence of COVID-19 cases (Cumulative number) in 2020 and 2021 from Our World in Data~\cite{ourworldindata}
 \end{enumerate}
 
 In the 5th data above, I used a cumulative data of incidence of positives on 2021/12/24 and 2020/12/31 in order to get a sum of cases by year.
 I organized data above by deleting row data of countries which don't exist on all datasets above.
+I used 2019 population data and 2018 malaria cases data because of a number of missing values in recent data.
 % Then I put 0 to every missing data place, which is called single imputation. 
 All of the data above is cross section data. 
 The number of observations was 193.
@@ -136,9 +137,15 @@ In implementation, I used jamovi, which is a rapper software of R~\cite{jamovi} 
 \end{table}
 
 The result is above~\ref{tab:r}\ref{tab:coefficient}. 
-There looks no significant effects on the transition of the number of COVID-19 cases from 2020 to 2021 from the coefficients related to diseases.
+Estimates column shows the estimated coefficient value.
+You can say that IncidenceOfMalaria2018per1000 and IncidenceOfTB2020per1000 is negative, so there should be a decrease in COVID-19 infections if the number of Malaria infections and TB increase.
+In addition, there should be an increase in COVID-19 infections if the number of HIV increase.
+Intercept means that even if there's no HIV/Malaria/TB country, there would be 437831 people who are COVID-19 positive.
+Of course, there was a significant relationship between population and transitions of COVID-19 positives.
+However, there was no significant effects on the transition of the number of COVID-19 cases from 2020 to 2021 from the coefficients related to diseases.
 I assume that this result was because people may get such diseases in various way. For example, you may get COVID-19 easily even if you breath in the virus once, but you cannot get HIV virus in such way. In addition, I assume there were so many missing values in the dataset.
 % Besides that, I cannot think of any other reasons, because I thought this model should work, actually.
+
 
 
 \chapter{Conclusion}
